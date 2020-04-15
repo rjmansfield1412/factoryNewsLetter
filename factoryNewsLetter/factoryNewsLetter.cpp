@@ -10,7 +10,7 @@
 
 namespace newsstuff
 {
-	// abstract base class that represents news items
+	///<summary> abstract base class that represents news items </summary>
 	class NewsItem
 	{
 	public:
@@ -30,6 +30,7 @@ namespace newsstuff
 	}
 
 	// derived types of NewsITems
+	///<summary>Text represents a type of NewsItem</summary>
 	class Text : public NewsItem
 	{
 	private:
@@ -58,6 +59,7 @@ namespace newsstuff
 		}
 	};
 
+	///<summary>Picture is also a type of NewsItem</summary>
 	class Picture : public NewsItem
 	{
 	private:
@@ -127,7 +129,7 @@ namespace newsstuff
 		}
 
 		void addNewsItem( const NewsItem& item );
-
+		///<param>filepath contains the fq path to the file to which we save the newsletter</param>
 		void save( const std::string& filepath ) const;
 		void load( const std::string& filepath );
 	};
