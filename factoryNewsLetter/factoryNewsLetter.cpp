@@ -86,6 +86,7 @@ namespace newsstuff
 		}
 	};
 
+	///<summary>NewsLetter contains multiple news items</summary>
 	class NewsLetter
 	{
 	private:
@@ -131,6 +132,13 @@ namespace newsstuff
 		void load( const std::string& filepath );
 	};
 
+	/// <summary>
+	///  createNewsItem splits the input string to get a type value pair.
+	///The type is then used to create the correct deriveative of NewsItem
+	/// </summary>
+	/// <returns>
+	/// NewsItem*.
+	/// </returns>
 	NewsItem* createNewsItem( const std::string& lineItem )
 	{
 		std::string type;
@@ -140,9 +148,7 @@ namespace newsstuff
 		if ( pos == std::string::npos )
 			return nullptr;
 		type.assign( lineItem.begin( ), lineItem.begin( ) + pos++ );
-		//std::copy( lineItem.begin( ), lineItem.begin( ) + (pos++), std::back_inserter( type ) );
 		value.assign( lineItem.begin( ) + pos, lineItem.end( ) );
-		// std::copy( lineItem.begin( ) + pos, lineItem.end( ), std::back_inserter( value ) );
 
 		if ( !type.compare( "Picture" ) ) return new Picture( value );
 		if ( !type.compare( "Text" ) ) return new Text( value );
